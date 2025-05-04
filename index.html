@@ -4,77 +4,274 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hello Bookkeeping – Features</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --primary: #007BFF;
+      --bg: #f9f9f9;
+      --text: #333;
+      --card-bg: white;
+    }
+
+    body.dark-mode {
+      --bg: #1f1f1f;
+      --text: #eaeaea;
+      --card-bg: #2c2c2c;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    .card h3 {
+      margin-top: 1rem;
+    }
+
+    .card p {
+      color: #666;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 2rem;
+      background-color: #eef4ff;
+    }
+
+    .cta button {
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta button:hover {
+      background-color: #0056b3;
+    }
+
+    .view-more {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .view-more button {
+      background: none;
+      border: 2px solid var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .view-more button:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .dark-toggle {
+      background: white;
+      color: var(--primary);
+      border: none;
+      border-radius: 5px;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 1rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #007BFF;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      z-index: 100;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      header, .hero, .cta {
+        padding: 1rem;
+      }
+
+      nav a {
+        margin-left: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <h1>Simple. Smart. Stress-Free Bookkeeping.</h1>
-    <p>Automate your accounting tasks with AI-powered features designed to save you time and money.</p>
+
+  <header>
+    <h1>Hello Bookkeeping</h1>
+    <div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+      </nav>
+      <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
+    </div>
   </header>
 
-  <section class="features-highlight">
-    <div class="feature-card">
-      <h3>Smart Invoicing</h3>
-      <p>Generate and send invoices instantly with real-time tracking.</p>
+  <section class="hero">
+    <h2>Explore Our Features</h2>
+    <p>Discover the tools that simplify your bookkeeping process.</p>
+  </section>
+
+  <section class="features" id="featureList">
+    <div class="card">
+      <h3>📄 Invoice Management</h3>
+      <p>Create and track invoices with ease.</p>
     </div>
-    <div class="feature-card">
-      <h3>Automated Expense Tracking</h3>
-      <p>Connect bank accounts and let our AI manage your expenses.</p>
+    <div class="card">
+      <h3>💰 Expense Tracking</h3>
+      <p>Track business expenses effortlessly.</p>
     </div>
-    <div class="feature-card">
-      <h3>Real-Time Dashboards</h3>
-      <p>Visualize your business with live, interactive dashboards.</p>
+    <div class="card">
+      <h3>📊 Financial Reports</h3>
+      <p>Generate instant, detailed reports.</p>
     </div>
-    <div class="feature-card">
-      <h3>Secure Cloud Storage</h3>
-      <p>Bank-level encryption for secure access to your data anytime.</p>
+    <div class="card">
+      <h3>🧾 Tax Calculations</h3>
+      <p>Automatically handle tax computation.</p>
+    </div>
+    <div class="card">
+      <h3>👥 Multi-user Access</h3>
+      <p>Collaborate securely with your team.</p>
+    </div>
+    <div class="card">
+      <h3>📱 Mobile App</h3>
+      <p>Manage finances on the go.</p>
+    </div>
+
+    <!-- Hidden Features -->
+    <div class="card hidden extra-feature">
+      <h3>🔒 Data Security</h3>
+      <p>Your data is encrypted and secure.</p>
+    </div>
+    <div class="card hidden extra-feature">
+      <h3>🔔 Alerts & Reminders</h3>
+      <p>Never miss important financial events.</p>
+    </div>
+    <div class="card hidden extra-feature">
+      <h3>🛠 Custom Integrations</h3>
+      <p>Connect with other tools easily.</p>
     </div>
   </section>
 
-  <div class="view-more-container">
-    <button id="toggleFeatures">View More Features</button>
+  <div class="view-more">
+    <button onclick="toggleMore()">View More Features</button>
   </div>
 
-  <section class="features-expanded" id="extraFeatures">
-    <div class="feature-card">
-      <h3>AI-Powered Reconciliation</h3>
-      <p>Auto-match transactions and reduce manual errors.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Tax Filing Assistance</h3>
-      <p>Stay compliant with automated tax reminders and filings.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Multi-User Collaboration</h3>
-      <p>Collaborate with team or accountant securely in real-time.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Mobile Access</h3>
-      <p>Manage finances on-the-go with responsive mobile UI.</p>
-    </div>
-    <div class="feature-card">
-      <h3>Seamless Integrations</h3>
-      <p>Connect with QuickBooks, Stripe, PayPal, and more.</p>
-    </div>
+  <section class="cta">
+    <h2>Ready to Simplify Your Bookkeeping?</h2>
+    <button onclick="showToast()">Start Free Trial</button>
+    <button>Book a Demo</button>
   </section>
 
-  <section class="cta">
-    <h2>Ready to simplify your accounting?</h2>
-    <div class="cta-buttons">
-      <a href="#" class="btn">Start Free Trial</a>
-      <a href="#" class="btn secondary">Book a Demo</a>
-    </div>
-  </section>
+  <div class="toast" id="toast">🎉 Free Trial Activated!</div>
 
   <script>
-    const toggleBtn = document.getElementById("toggleFeatures");
-    const extraFeatures = document.getElementById("extraFeatures");
-    let visible = false;
-    toggleBtn.addEventListener("click", () => {
-      visible = !visible;
-      extraFeatures.style.display = visible ? "grid" : "none";
-      toggleBtn.textContent = visible ? "Hide Features" : "View More Features";
+    function toggleMore() {
+      const extras = document.querySelectorAll(".extra-feature");
+      const btn = document.querySelector(".view-more button");
+      extras.forEach(el => el.classList.toggle("hidden"));
+      btn.textContent = btn.textContent.includes("More") ? "View Less Features" : "View More Features";
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3000);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        document.title = "👋 Come back to Hello Bookkeeping!";
+      } else {
+        document.title = "Hello Bookkeeping – Features";
+      }
     });
   </script>
+
 </body>
 </html>
