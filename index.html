@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hello Bookkeeping – Features</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Simple. Smart. Stress-Free Bookkeeping.</h1>
+    <p>Automate your accounting tasks with AI-powered features designed to save you time and money.</p>
+  </header>
+
+  <section class="features-highlight">
+    <div class="feature-card">
+      <h3>Smart Invoicing</h3>
+      <p>Generate and send invoices instantly with real-time tracking.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Automated Expense Tracking</h3>
+      <p>Connect bank accounts and let our AI manage your expenses.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Real-Time Dashboards</h3>
+      <p>Visualize your business with live, interactive dashboards.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Secure Cloud Storage</h3>
+      <p>Bank-level encryption for secure access to your data anytime.</p>
+    </div>
+  </section>
+
+  <div class="view-more-container">
+    <button id="toggleFeatures">View More Features</button>
+  </div>
+
+  <section class="features-expanded" id="extraFeatures">
+    <div class="feature-card">
+      <h3>AI-Powered Reconciliation</h3>
+      <p>Auto-match transactions and reduce manual errors.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Tax Filing Assistance</h3>
+      <p>Stay compliant with automated tax reminders and filings.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Multi-User Collaboration</h3>
+      <p>Collaborate with team or accountant securely in real-time.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Mobile Access</h3>
+      <p>Manage finances on-the-go with responsive mobile UI.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Seamless Integrations</h3>
+      <p>Connect with QuickBooks, Stripe, PayPal, and more.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to simplify your accounting?</h2>
+    <div class="cta-buttons">
+      <a href="#" class="btn">Start Free Trial</a>
+      <a href="#" class="btn secondary">Book a Demo</a>
+    </div>
+  </section>
+
+  <script>
+    const toggleBtn = document.getElementById("toggleFeatures");
+    const extraFeatures = document.getElementById("extraFeatures");
+    let visible = false;
+    toggleBtn.addEventListener("click", () => {
+      visible = !visible;
+      extraFeatures.style.display = visible ? "grid" : "none";
+      toggleBtn.textContent = visible ? "Hide Features" : "View More Features";
+    });
+  </script>
+</body>
+</html>
